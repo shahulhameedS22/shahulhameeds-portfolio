@@ -65,9 +65,7 @@ function Index() {
       <Preloader />
       <Navbar />
       <main>
-        <h1 className="sr-only">
-          Shahul Hameed S — Computer Science Engineer, Networking and VMware ESXi specialist
-        </h1>
+
         <Hero />
         <About />
         <Journey />
