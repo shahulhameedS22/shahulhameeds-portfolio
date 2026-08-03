@@ -104,9 +104,17 @@ export function Hero() {
               <Mail /> Email
             </a>
           </Button>
-          <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs text-muted-foreground">
-            <MapPin className="size-3.5 text-primary" /> {profile.location}
-          </span>
+          <Button variant="glass" size="sm" asChild>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.location)}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`View ${profile.location} on Google Maps (opens in a new tab)`}
+            >
+              <MapPin /> {profile.location}
+            </a>
+          </Button>
+
         </div>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
