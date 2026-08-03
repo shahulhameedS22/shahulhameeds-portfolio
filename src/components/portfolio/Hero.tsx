@@ -63,12 +63,17 @@ export function Hero() {
         </h1>
 
         <p
-          className="mt-5 font-mono text-base text-primary sm:text-xl"
+          className="mt-5 flex items-center justify-center gap-2 font-mono text-base text-primary sm:text-xl"
           aria-label={profile.role}
         >
-          {typed}
-          <span className="animate-blink ml-0.5 inline-block">|</span>
+          <span aria-hidden className="text-primary/50">&#47;&#47;</span>
+          <span>{typed}</span>
+          <span
+            aria-hidden
+            className="animate-beam inline-block h-[1.1em] w-[3px] origin-center rounded-full bg-primary"
+          />
         </p>
+
 
         <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
           {profile.intro}
@@ -99,9 +104,17 @@ export function Hero() {
               <Mail /> Email
             </a>
           </Button>
-          <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs text-muted-foreground">
-            <MapPin className="size-3.5 text-primary" /> {profile.location}
-          </span>
+          <Button variant="glass" size="sm" asChild>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.location)}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`View ${profile.location} on Google Maps (opens in a new tab)`}
+            >
+              <MapPin /> {profile.location}
+            </a>
+          </Button>
+
         </div>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
