@@ -162,6 +162,28 @@
   }
 }
 
+@keyframes beam {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+    opacity: 0.55;
+    box-shadow: 0 0 6px color-mix(in oklab, var(--primary) 45%, transparent);
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+    box-shadow: 0 0 18px color-mix(in oklab, var(--primary) 75%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-beam {
+    animation: none;
+  }
+}
+
+
+
 @keyframes marquee {
   from {
     transform: translateX(0);
