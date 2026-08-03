@@ -137,17 +137,8 @@ export function Contact() {
                 ))}
               </ul>
             </div>
-
-            <div className="glass-card overflow-hidden rounded-3xl p-2">
-              <iframe
-                title="Map showing Trichy, Tamil Nadu, India"
-                src="https://www.google.com/maps?q=Tiruchirappalli,Tamil%20Nadu,India&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-56 w-full rounded-2xl border-0 grayscale-[35%]"
-              />
-            </div>
           </Reveal>
+
 
           <Reveal delay={120}>
             <form onSubmit={onSubmit} noValidate className="glass-card rounded-3xl p-6 sm:p-8">
