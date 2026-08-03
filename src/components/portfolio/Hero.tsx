@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Download, Github, Linkedin, Mail, MapPin, Sparkles } from "lucide-react";
+import { Download, Github, Linkedin, Mail, MapPin, Sparkles, Network, Server, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
-import { profile } from "@/data/portfolio";
+import { profile, counters } from "@/data/portfolio";
 import { downloadResume } from "@/lib/resume";
-import profileImage from "@/assets/profile.jpg";
 
 function useTypewriter(words: readonly string[]) {
   const [index, setIndex] = useState(0);
@@ -35,6 +34,12 @@ function useTypewriter(words: readonly string[]) {
   return text;
 }
 
+const focusCards = [
+  { icon: Network, title: "Networking", note: "Routing, switching, CCNA in progress" },
+  { icon: Server, title: "VMware ESXi", note: "Virtualization & data center" },
+  { icon: Terminal, title: "Tech Support", note: "Troubleshooting & infrastructure" },
+];
+
 export function Hero() {
   const typed = useTypewriter(profile.typingRoles);
 
@@ -42,86 +47,90 @@ export function Hero() {
     <section id="home" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
       <div aria-hidden className="hero-glow absolute inset-x-0 top-0 h-[640px]" />
       <ParticleField />
+      <div
+        aria-hidden
+        className="animate-glow absolute -top-32 left-1/2 size-[520px] -translate-x-1/2 rounded-full bg-[image:var(--gradient-accent)] opacity-30 blur-[120px]"
+      />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 lg:grid-cols-[1.15fr_0.85fr]">
-        <div>
-          <span className="glass-card inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-primary">
-            <Sparkles className="size-3.5" />
-            Available for networking &amp; infrastructure roles
+      <div className="relative mx-auto max-w-5xl px-4 text-center">
+        <span className="glass-card inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-primary">
+          <Sparkles className="size-3.5" />
+          Available for networking &amp; infrastructure roles
+        </span>
+
+        <h1 className="mt-7 text-4xl leading-[1.05] font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          Hello, I&apos;m <span className="gradient-text">Shahul Hameed S</span>
+        </h1>
+
+        <p
+          className="mt-5 font-mono text-base text-primary sm:text-xl"
+          aria-label={profile.role}
+        >
+          {typed}
+          <span className="animate-blink ml-0.5 inline-block">|</span>
+        </p>
+
+        <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {profile.intro}
+        </p>
+
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <Button variant="hero" size="lg" asChild>
+            <a href="#contact">Let&apos;s Connect</a>
+          </Button>
+          <Button variant="outlineGlow" size="lg" onClick={downloadResume}>
+            <Download /> Download Resume
+          </Button>
+        </div>
+
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <Button variant="glass" size="sm" asChild>
+            <a href={profile.github} target="_blank" rel="noreferrer noopener">
+              <Github /> GitHub
+            </a>
+          </Button>
+          <Button variant="glass" size="sm" asChild>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer noopener">
+              <Linkedin /> LinkedIn
+            </a>
+          </Button>
+          <Button variant="glass" size="sm" asChild>
+            <a href={`mailto:${profile.email}`}>
+              <Mail /> Email
+            </a>
+          </Button>
+          <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs text-muted-foreground">
+            <MapPin className="size-3.5 text-primary" /> {profile.location}
           </span>
-
-          <h1 className="mt-6 text-4xl leading-[1.08] font-bold sm:text-5xl lg:text-6xl">
-            Hello, I&apos;m <span className="gradient-text">Shahul Hameed S</span>
-          </h1>
-
-          <p
-            className="mt-4 font-mono text-base text-primary sm:text-lg"
-            aria-label={profile.role}
-          >
-            {typed}
-            <span className="animate-blink ml-0.5 inline-block">|</span>
-          </p>
-
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">{profile.role}</p>
-
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {profile.intro}
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button variant="hero" size="lg" asChild>
-              <a href="#contact">Let&apos;s Connect</a>
-            </Button>
-            <Button variant="outlineGlow" size="lg" onClick={downloadResume}>
-              <Download /> Download Resume
-            </Button>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button variant="glass" size="sm" asChild>
-              <a href={profile.github} target="_blank" rel="noreferrer noopener">
-                <Github /> GitHub
-              </a>
-            </Button>
-            <Button variant="glass" size="sm" asChild>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer noopener">
-                <Linkedin /> LinkedIn
-              </a>
-            </Button>
-            <Button variant="glass" size="sm" asChild>
-              <a href={`mailto:${profile.email}`}>
-                <Mail /> Email
-              </a>
-            </Button>
-            <span className="glass-card inline-flex items-center gap-2 rounded-full px-4 text-xs text-muted-foreground">
-              <MapPin className="size-3.5 text-primary" /> {profile.location}
-            </span>
-          </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm">
-          <div
-            aria-hidden
-            className="animate-glow absolute inset-6 rounded-full bg-[image:var(--gradient-accent)] blur-3xl"
-          />
-          <div className="glass-card animate-float relative overflow-hidden rounded-[2.5rem] p-2">
-            <img
-              src={profileImage}
-              alt="Portrait of Shahul Hameed S, Computer Science Engineer and IT Engineer Trainee"
-              width={896}
-              height={1152}
-              className="h-auto w-full rounded-[2rem] object-cover"
-            />
-          </div>
-          <div className="glass-card absolute -bottom-5 -left-4 rounded-2xl px-4 py-3">
-            <p className="font-display text-lg font-bold text-primary">VMware ESXi</p>
-            <p className="text-xs text-muted-foreground">Virtualization &amp; Data Center</p>
-          </div>
-          <div className="glass-card absolute -top-4 -right-2 rounded-2xl px-4 py-3">
-            <p className="font-display text-lg font-bold text-primary">CCNA</p>
-            <p className="text-xs text-muted-foreground">Currently studying</p>
-          </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
+          {focusCards.map((card, i) => (
+            <div
+              key={card.title}
+              className="glass-card rounded-2xl p-5 text-left transition-transform duration-300 hover:-translate-y-1"
+              style={{ animationDelay: `${i * 160}ms` }}
+            >
+              <span className="grid size-10 place-items-center rounded-xl bg-primary/12 text-primary ring-1 ring-primary/25">
+                <card.icon className="size-5" />
+              </span>
+              <p className="font-display mt-4 text-base font-semibold">{card.title}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{card.note}</p>
+            </div>
+          ))}
         </div>
+
+        <dl className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {counters.map((c) => (
+            <div key={c.label} className="glass-card rounded-2xl px-4 py-5">
+              <dt className="order-2 mt-1 text-[11px] text-muted-foreground">{c.label}</dt>
+              <dd className="font-display text-xl font-bold text-primary sm:text-2xl">
+                {c.value}
+                {c.suffix}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
