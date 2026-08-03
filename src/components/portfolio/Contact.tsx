@@ -137,7 +137,7 @@ export function Contact() {
                 ))}
               </ul>
             </div>
-
+          </Reveal>
 
 
           <Reveal delay={120}>
