@@ -26,7 +26,12 @@ type Errors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
 const details = [
   { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
   { icon: Phone, label: "Phone", value: profile.phone, href: `tel:${profile.phone}` },
-  { icon: MapPin, label: "Location", value: profile.location },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: profile.location,
+    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.location)}`,
+  },
   { icon: Linkedin, label: "LinkedIn", value: "shahul-hameed-s", href: profile.linkedin },
   { icon: Github, label: "GitHub", value: "shahulhameedS22", href: profile.github },
 ];
