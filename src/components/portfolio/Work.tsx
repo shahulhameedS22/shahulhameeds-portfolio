@@ -82,26 +82,16 @@ export function Work() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {certifications.map((c, i) => (
               <Reveal key={c.title} delay={i * 100}>
-                <a
-                  href={`https://www.google.com/search?q=${encodeURIComponent(`${c.title} ${c.org} certification course`)}`}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={`Search Google for ${c.title} by ${c.org} (opens in a new tab)`}
-                  className="glass-card block h-full rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
-                >
+                <div className="glass-card h-full rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30">
                   <BadgeCheck className="size-6 text-primary" />
-                  <h3 className="mt-4 flex items-center gap-1.5 font-semibold">
-                    {c.title}
-                    <ArrowUpRight className="size-4 shrink-0 text-primary" aria-hidden />
-                  </h3>
+                  <h3 className="mt-4 font-semibold">{c.title}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{c.org}</p>
                   <span className="mt-4 inline-block rounded-full bg-primary/12 px-3 py-1 text-xs text-primary ring-1 ring-primary/25">
                     {c.status}
                   </span>
-                </a>
+                </div>
               </Reveal>
             ))}
-
           </div>
         </div>
       </div>
