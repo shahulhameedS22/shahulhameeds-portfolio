@@ -36,11 +36,30 @@ function useTypewriter(words: readonly string[]) {
   return text;
 }
 
+const googleSearch = (q: string) =>
+  `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+
 const focusCards = [
-  { icon: Network, title: "Networking", note: "Routing, switching, CCNA in progress" },
-  { icon: Server, title: "VMware ESXi", note: "Virtualization & data center" },
-  { icon: Terminal, title: "Tech Support", note: "Troubleshooting & infrastructure" },
+  {
+    icon: Network,
+    title: "Networking",
+    note: "Routing, switching, CCNA in progress",
+    query: "computer networking routing and switching CCNA",
+  },
+  {
+    icon: Server,
+    title: "VMware ESXi",
+    note: "Virtualization & data center",
+    query: "VMware ESXi virtualization data center",
+  },
+  {
+    icon: Terminal,
+    title: "Tech Support",
+    note: "Troubleshooting & infrastructure",
+    query: "IT technical support infrastructure troubleshooting",
+  },
 ];
+
 
 export function Hero() {
   const typed = useTypewriter(profile.typingRoles);
