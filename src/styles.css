@@ -42,8 +42,8 @@
   --animate-marquee: marquee 30s linear infinite;
   --animate-glow: glow 4s ease-in-out infinite;
   --animate-blink: blink 1s step-end infinite;
-  --animate-beam: beam 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   --animate-drift: drift 18s linear infinite;
+
 
 }
 
