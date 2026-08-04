@@ -56,17 +56,17 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-5xl px-4 text-center">
         <div className="relative mx-auto mb-8 w-fit">
-          <div aria-hidden className="absolute inset-0 rounded-full bg-[image:var(--gradient-accent)] opacity-25 blur-2xl" />
-          <div className="glass-card relative rounded-full p-1.5">
-            <div className="size-36 overflow-hidden rounded-full ring-1 ring-primary/25 sm:size-44">
+          <div aria-hidden className="absolute -inset-6 rounded-[2rem] bg-[image:var(--gradient-accent)] opacity-20 blur-2xl" />
+          <div className="glass-card relative rounded-[2rem] p-2">
+            <div className="w-40 overflow-hidden rounded-[1.5rem] ring-1 ring-primary/25 sm:w-52 aspect-[4/5]">
               <img
                 src={profilePhoto}
                 alt="Shahul Hameed S"
-                width={352}
-                height={352}
+                width={520}
+                height={650}
                 loading="eager"
                 decoding="async"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-top"
               />
             </div>
           </div>
@@ -76,6 +76,7 @@ export function Hero() {
           <Sparkles className="size-3.5" />
           Available for networking &amp; infrastructure roles
         </span>
+
 
 
         <h1 className="mt-7 text-4xl leading-[1.05] font-bold tracking-tight sm:text-6xl lg:text-7xl">
