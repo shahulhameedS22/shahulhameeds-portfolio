@@ -68,10 +68,6 @@ export function Hero() {
         >
           <span aria-hidden className="text-primary/50">&#47;&#47;</span>
           <span>{typed}</span>
-          <span
-            aria-hidden
-            className="animate-beam inline-block h-[1.1em] w-[3px] origin-center rounded-full bg-primary"
-          />
         </p>
 
 
