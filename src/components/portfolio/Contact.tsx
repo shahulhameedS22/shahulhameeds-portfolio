@@ -216,8 +216,18 @@ export function Contact() {
                 {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
               </div>
 
-              <Button type="submit" variant="hero" size="lg" className="mt-6 w-full">
-                {sent ? (
+              <Button
+                type="submit"
+                variant="hero"
+                size="lg"
+                className="mt-6 w-full"
+                disabled={sending}
+              >
+                {sending ? (
+                  <>
+                    <Loader2 className="animate-spin" /> Sending…
+                  </>
+                ) : sent ? (
                   <>
                     <Check className="animate-in zoom-in" /> Message sent
                   </>
