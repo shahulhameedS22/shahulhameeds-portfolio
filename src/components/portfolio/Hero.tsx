@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Download, Github, Linkedin, Mail, MapPin, Sparkles, Network, Server, Terminal } from "lucide-react";
+import { ArrowUpRight, Download, Github, Linkedin, Mail, MapPin, Sparkles, Network, Server, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
 import { profile, counters } from "@/data/portfolio";
@@ -36,11 +36,30 @@ function useTypewriter(words: readonly string[]) {
   return text;
 }
 
+const googleSearch = (q: string) =>
+  `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+
 const focusCards = [
-  { icon: Network, title: "Networking", note: "Routing, switching, CCNA in progress" },
-  { icon: Server, title: "VMware ESXi", note: "Virtualization & data center" },
-  { icon: Terminal, title: "Tech Support", note: "Troubleshooting & infrastructure" },
+  {
+    icon: Network,
+    title: "Networking",
+    note: "Routing, switching, CCNA in progress",
+    query: "computer networking routing and switching CCNA",
+  },
+  {
+    icon: Server,
+    title: "VMware ESXi",
+    note: "Virtualization & data center",
+    query: "VMware ESXi virtualization data center",
+  },
+  {
+    icon: Terminal,
+    title: "Tech Support",
+    note: "Troubleshooting & infrastructure",
+    query: "IT technical support infrastructure troubleshooting",
+  },
 ];
+
 
 export function Hero() {
   const typed = useTypewriter(profile.typingRoles);
@@ -136,18 +155,26 @@ export function Hero() {
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
           {focusCards.map((card, i) => (
-            <div
+            <a
               key={card.title}
-              className="glass-card rounded-2xl p-5 text-left transition-transform duration-300 hover:-translate-y-1"
+              href={googleSearch(card.query)}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={`Search Google for ${card.title} (opens in a new tab)`}
+              className="glass-card block rounded-2xl p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               style={{ animationDelay: `${i * 160}ms` }}
             >
               <span className="grid size-10 place-items-center rounded-xl bg-primary/12 text-primary ring-1 ring-primary/25">
                 <card.icon className="size-5" />
               </span>
-              <p className="font-display mt-4 text-base font-semibold">{card.title}</p>
+              <p className="font-display mt-4 flex items-center gap-1.5 text-base font-semibold">
+                {card.title}
+                <ArrowUpRight className="size-4 text-primary" aria-hidden />
+              </p>
               <p className="mt-1 text-xs text-muted-foreground">{card.note}</p>
-            </div>
+            </a>
           ))}
+
         </div>
 
         <dl className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
