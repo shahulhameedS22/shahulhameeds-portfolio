@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
 import { profile, counters } from "@/data/portfolio";
 import { downloadResume } from "@/lib/resume";
+import profilePhoto from "@/assets/profile.jpg";
+
 
 function useTypewriter(words: readonly string[]) {
   const [index, setIndex] = useState(0);
@@ -53,10 +55,28 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-5xl px-4 text-center">
+        <div className="relative mx-auto mb-8 w-fit">
+          <div aria-hidden className="absolute inset-0 rounded-full bg-[image:var(--gradient-accent)] opacity-25 blur-2xl" />
+          <div className="glass-card relative rounded-full p-1.5">
+            <div className="size-36 overflow-hidden rounded-full ring-1 ring-primary/25 sm:size-44">
+              <img
+                src={profilePhoto}
+                alt="Shahul Hameed S"
+                width={352}
+                height={352}
+                loading="eager"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
         <span className="glass-card inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-primary">
           <Sparkles className="size-3.5" />
           Available for networking &amp; infrastructure roles
         </span>
+
 
         <h1 className="mt-7 text-4xl leading-[1.05] font-bold tracking-tight sm:text-6xl lg:text-7xl">
           Hello, I&apos;m <span className="gradient-text">Shahul Hameed S</span>
