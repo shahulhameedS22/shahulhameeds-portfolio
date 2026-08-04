@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Download, Github, Linkedin, Mail, MapPin, Sparkles, Network, Server, Terminal } from "lucide-react";
+import { ArrowUpRight, Download, Github, Linkedin, Mail, MapPin, Sparkles, Network, Server, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
 import { profile, counters } from "@/data/portfolio";
