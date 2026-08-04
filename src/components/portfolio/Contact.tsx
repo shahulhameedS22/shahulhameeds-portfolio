@@ -44,6 +44,7 @@ const details = [
 export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
 
   const copy = async (value: string) => {
@@ -57,9 +58,10 @@ export function Contact() {
     }
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formEl = event.currentTarget;
+    const form = new FormData(formEl);
     const parsed = contactSchema.safeParse({
       name: form.get("name"),
       email: form.get("email"),
@@ -79,16 +81,36 @@ export function Contact() {
 
     setErrors({});
     const { name, email, subject, message } = parsed.data;
-    setSent(true);
-    toast.success("Message ready to send!", {
-      description: "Your mail app is opening with the message pre-filled.",
-    });
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(`${message}\n\n— ${name} (${email})`)}`;
-    event.currentTarget.reset();
-    setTimeout(() => setSent(false), 4000);
+    setSending(true);
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: name,
+          from_email: email,
+          reply_to: email,
+          subject,
+          message,
+          to_email: profile.email,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setSent(true);
+      toast.success("Message sent!", {
+        description: "Thanks for reaching out — I'll get back to you soon.",
+      });
+      formEl.reset();
+      setTimeout(() => setSent(false), 4000);
+    } catch {
+      toast.error("Couldn't send your message", {
+        description: "Please try again or email me directly.",
+      });
+    } finally {
+      setSending(false);
+    }
   };
+
 
   return (
     <section id="contact" className="relative py-20 sm:py-28">
