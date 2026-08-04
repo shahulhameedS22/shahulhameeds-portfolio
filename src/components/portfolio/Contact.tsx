@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
-import { Check, Copy, Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { Check, Copy, Github, Linkedin, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import { profile } from "@/data/portfolio";
 import { SectionHeading } from "./SectionHeading";
@@ -9,6 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+
+const EMAILJS_PUBLIC_KEY = "_Zlm6qZPURdX06X3k";
+const EMAILJS_SERVICE_ID = "service_02e9dfd";
+const EMAILJS_TEMPLATE_ID = "template_tsrdsgv";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100, "Name is too long"),
