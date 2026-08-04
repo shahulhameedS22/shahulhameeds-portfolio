@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ParticleField } from "./ParticleField";
 import { profile, counters } from "@/data/portfolio";
 import { downloadResume } from "@/lib/resume";
+import profilePhoto from "@/assets/profile.jpg";
+
 
 function useTypewriter(words: readonly string[]) {
   const [index, setIndex] = useState(0);
