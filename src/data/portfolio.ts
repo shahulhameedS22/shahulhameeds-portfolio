@@ -194,6 +194,12 @@ export const achievements = [
     ],
   },
   {
+    title: "School First",
+    org: "12th Grade",
+    icon: "trophy",
+    points: ["Secured school first in 12th grade."],
+  },
+  {
     title: "Overall Winner — Technical Symposium",
     org: "Government College of Engineering, Coimbatore",
     icon: "trophy",
