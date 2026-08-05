@@ -125,22 +125,41 @@ export const skillGroups = [
   },
 ] as const;
 
-export const project = {
-  title: "AI-Assisted Mock Test Platform for Bank Exam Preparation",
-  description:
-    "Developed an intelligent mock test platform that assists bank exam aspirants in evaluating and improving their performance using AI-driven insights.",
-  features: [
-    "AI-generated bank exam questions using Agentic AI and Large Language Models (LLMs).",
-    "Overall performance analysis.",
-    "Section-wise analysis (Aptitude, Reasoning, English).",
-    "Weak and strong area identification.",
-    "Personalized recommendations.",
-    "Topic-wise improvement suggestions.",
-    "Performance tracking dashboard.",
-  ],
-  tech: ["Java", "React", "Agentic AI", "Large Language Models (LLM)"],
-  repo: "https://github.com/shahulhameedS22/AI-Mock-Test-Project.git",
-};
+export const projects = [
+  {
+    title: "AI-Assisted Mock Test Platform for Bank Exam Preparation",
+    description:
+      "Developed an intelligent mock test platform that assists bank exam aspirants in evaluating and improving their performance using AI-driven insights.",
+    features: [
+      "AI-generated bank exam questions using Agentic AI and Large Language Models (LLMs).",
+      "Overall performance analysis.",
+      "Section-wise analysis (Aptitude, Reasoning, English).",
+      "Weak and strong area identification.",
+      "Personalized recommendations.",
+      "Topic-wise improvement suggestions.",
+      "Performance tracking dashboard.",
+    ],
+    tech: ["Java", "React", "Agentic AI", "Large Language Models (LLM)"],
+    repo: "https://github.com/shahulhameedS22/AI-Mock-Test-Project.git",
+    badge: "Agentic AI · Full Stack",
+  },
+  {
+    title: "Tutor AI",
+    description:
+      "Developed an AI-powered interview preparation platform for technical and HR interview practice. Integrated LLM-based question generation and personalized feedback to improve interview performance. Built a full-stack web application with secure authentication, interview history, and performance tracking.",
+    features: [
+      "AI-powered technical and HR interview practice.",
+      "LLM-based interview question generation.",
+      "Personalized feedback and improvement suggestions.",
+      "Secure user authentication and account management.",
+      "Interview history and progress tracking.",
+      "Performance analytics dashboard.",
+    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "LLM"],
+    repo: "https://github.com/shahulhameedS22/Tutor_AI.git",
+    badge: "AI Tutor · Full Stack",
+  },
+];
 
 export const certifications = [
   { title: "SOC Analyst", org: "Udemy", status: "In Progress" },
