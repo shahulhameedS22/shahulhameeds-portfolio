@@ -139,7 +139,7 @@ export const project = {
     "Performance tracking dashboard.",
   ],
   tech: ["Java", "React", "Agentic AI", "Large Language Models (LLM)"],
-  repo: "https://github.com/shahulhameedS22/My-Project",
+  repo: "https://github.com/shahulhameedS22/AI-Mock-Test-Project.git",
 };
 
 export const certifications = [
