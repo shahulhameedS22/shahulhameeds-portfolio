@@ -4,7 +4,7 @@ import {
   education,
   experience,
   profile,
-  project,
+  projects,
   skillGroups,
 } from "@/data/portfolio";
 
